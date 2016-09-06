@@ -113,6 +113,7 @@ TMP_NAME="$$"
 TMP_PDF="/tmp/${TMP_NAME}.pdf"
 TMP_OK_PDF="/tmp/${TMP_NAME}.ok.pdf"
 
-`convert  "${COVER}"  -fill white -undercolor '#0000' -pointsize 15 -gravity north  -annotate +0+5 "${COVER}" "${TMP_PDF}" && pdfunite "${TMP_PDF}" "${PDF_LIST}" "${TMP_OK_PDF}" && cp "${TMP_OK_PDF}" "${OUT}" && rm "${TMP_PDF}" && rm "${TMP_OK_PDF}"`
+#`convert  "${COVER}"  -fill white -undercolor '#0000' -pointsize 15 -gravity north  -annotate +0+5 "${COVER}" "${TMP_PDF}" && pdfunite "${TMP_PDF}" "${PDF_LIST}" "${TMP_OK_PDF}" && cp "${TMP_OK_PDF}" "${OUT}" && rm "${TMP_PDF}" && rm "${TMP_OK_PDF}"`
+`convert  "${COVER}"  -fill white -undercolor '#0000' -pointsize 15 -gravity north  -annotate +0+5 "${COVER}" "${TMP_PDF}" && pdftk  "${TMP_PDF}" "${PDF_LIST}" cat output  "${TMP_OK_PDF}" && cp "${TMP_OK_PDF}" "${OUT}" && rm "${TMP_PDF}" && rm "${TMP_OK_PDF}"`
 
 echo "Ok"
